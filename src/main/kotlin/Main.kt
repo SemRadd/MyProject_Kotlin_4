@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     /*Массивы:*/
 
 /*1. Дан массив с целыми числами. Вывести в консоль количество положительных и отрицательных чисел в нем*/
-/*
+
     val a = intArrayOf(8, 2, 7, -2, 5, 6, 3, 1, 9, -3, -6, -8, -1, -4, -5, -7, -9)
     println("Массив целых чисел:\n")
     println(Arrays.toString(a))
@@ -55,13 +55,25 @@ fun main(args: Array<String>) {
     }
     println("Наибольшее число в массиве: $largestElement")
 
- */
+
 /*5. Дан массив с целыми числами. Вывести в консоль наиболее часто встречающееся числа. Если таких несколько, то вывести
     наибольшее из них, если повторяющихся нет, вывести соответствующее сообщение.*/
 
+    fun <T> hasDuplicates(list: Array<T>): Boolean {
+        return list.size != list.distinct().count();
+    }
+
+    val list: Array<Int> = arrayOf(6, 0, 6, 1, 7, 1, 10)
+    val countByElement = list.groupingBy { it }.eachCount()
+    val maximumElement = countByElement.maxBy { it.value }?.key
+    if (hasDuplicates(list)) {
+        println(maximumElement)
+    } else {
+        println("Повторяющихся цифр нет!")
+    }
 
 /*6. Дан двумерный массив 10х10 с целыми числами. Вывести в консоль все числа по диагонали от [0][0] до [10][10]*/
-/*
+
     var arr_1 = arrayOf(intArrayOf(10, 21, -3), intArrayOf(14, 0, 6), intArrayOf(-110, 8, 1000))
     for (row in arr_1) {
         println(row.contentToString())
@@ -102,5 +114,5 @@ fun main(args: Array<String>) {
     } else {
         println("Сумма чисел в третьей строке самая наибольшая и равна: $pillar_3")
     }
- */
+
 }
